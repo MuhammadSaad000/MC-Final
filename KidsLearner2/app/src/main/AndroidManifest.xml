@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KidsLearner">
         <activity
+            android:name=".Alphabet"
+            android:exported="false" />
+        <activity
+            android:name=".Quiz"
+            android:exported="false" />
+        <activity
+            android:name=".learn"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
