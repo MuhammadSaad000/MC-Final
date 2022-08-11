@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/taskDetail"
         android:layout_width="349dp"
         android:layout_height="57dp"
         android:ems="10"
@@ -20,12 +20,12 @@
         app:layout_constraintVertical_bias="0.043" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnAddTask"
         android:layout_width="349dp"
         android:layout_height="57dp"
         android:layout_marginTop="16dp"
         android:text="Add Task"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/taskDetail" />
 </androidx.constraintlayout.widget.ConstraintLayout>
