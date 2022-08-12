@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setMessage("Update or Delete? ");
                 builder.setPositiveButton("Update", new DialogInterface.OnClickListener() {
@@ -48,9 +48,13 @@ public class MainActivity extends AppCompatActivity {
                 builder.setNegativeButton("Delete ", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        
+                        tasks.remove(position);
+                        arrayAdapter.notifyDataSetChanged();
                     }
                 });
+                AlertDialog ad = builder.create();
+                ad.show();
+
 
             }
         });
