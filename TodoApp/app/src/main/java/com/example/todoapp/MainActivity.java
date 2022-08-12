@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 builder.setPositiveButton("Update", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
+                        Toast.makeText(MainActivity.this, "Update not supported in simple lists", Toast.LENGTH_SHORT ).show();
                     }
                 });
                 builder.setNegativeButton("Delete ", new DialogInterface.OnClickListener() {
