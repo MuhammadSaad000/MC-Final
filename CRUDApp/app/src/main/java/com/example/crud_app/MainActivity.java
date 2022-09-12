@@ -33,14 +33,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                Student st;
                 try {
-                    Student st = new Student(-1, name.getText().toString() ,rollno.getText().toString() ,isEnrolled.isChecked());
+                    st = new Student(-1, name.getText().toString() ,rollno.getText().toString() ,isEnrolled.isChecked());
                     Toast.makeText(MainActivity.this, st.toString() ,Toast.LENGTH_SHORT).show();
                 }
                 catch (Exception ex)
                 {
                     Toast.makeText(MainActivity.this , "Error creating student",Toast.LENGTH_SHORT).show();
+                    st = new Student(-1,null,null,false);
                 }
+
+                MyDbHelper dbHelper = new MyDbHelper(MainActivity.this);
+                boolean success = dbHelper.AddStudent(st);
+                Toast.makeText(MainActivity.this , "Success " + success ,Toast.LENGTH_SHORT).show();
+
 
 
             }
