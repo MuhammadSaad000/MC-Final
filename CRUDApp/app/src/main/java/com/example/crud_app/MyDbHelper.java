@@ -2,10 +2,14 @@ package com.example.crud_app;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MyDbHelper extends SQLiteOpenHelper {
 
@@ -33,6 +37,37 @@ public class MyDbHelper extends SQLiteOpenHelper {
 
     }
 
+    public List<Student> GetStudents()
+    {
+        List<Student> students = new ArrayList<>();
+        String query = "SELECT * FROM " + STUDENT_TABLE;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(query , null);
+        if(cursor.moveToFirst()){
+            do {
+                //  i = columnindex
+                int id = cursor.getInt(0);
+                String name = cursor.getString(1);
+                String rollno = cursor.getString(2);
+                boolean enrolled = cursor.getInt(3) == 1 ? true : false;
+                Student temp = new Student(id, name, rollno , enrolled );
+                students.add(temp);
+            }
+            while (cursor.moveToNext());
+        }
+        else {
+
+        }
+        cursor.close();
+        db.close();
+        return students;
+
+
+    }
+
+
+
     public boolean AddStudent(Student s)
     {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -48,6 +83,8 @@ public class MyDbHelper extends SQLiteOpenHelper {
         else
             return true;
     }
+
+
 
 
 
