@@ -84,6 +84,18 @@ public class MyDbHelper extends SQLiteOpenHelper {
             return true;
     }
 
+    public boolean DeleteStudent(Student s)
+    {
+        SQLiteDatabase db =this.getWritableDatabase();
+        String query = "DELETE FROM " + STUDENT_TABLE + " WHERE " + ID  + "=" + s.getId();
+        Cursor cursor =  db.rawQuery(query ,null);
+        if(cursor.moveToFirst())
+        {
+            return true;
+        }
+        else
+            return false;
+    }
 
 
 
